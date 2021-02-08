@@ -29,4 +29,3 @@ else:
 print("Now, go spread positive vibes!")
 
 
-# Begin your solution here...
