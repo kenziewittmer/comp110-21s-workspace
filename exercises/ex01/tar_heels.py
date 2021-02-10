@@ -14,3 +14,6 @@ if remainder_2 == 0:
 else:
     if remainder_7 == 0:
         print("HEELS")
+if remainder_2 != 0:
+    if remainder_7 != 0:
+        print("CAROLINA")
