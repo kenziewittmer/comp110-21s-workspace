@@ -23,7 +23,7 @@ administered: int = int(input("How many doses have already been administered? ")
 per_day: int = int(input("How many doses are being administered per day? "))
 target: int = int(input("What is the target percent of the population that you want to be vaccinated? "))
 
-vaccines_needed: int = int((population * 2) * (target / 100)) - administered
+vaccines_needed: int = int((population * 2) * (target / 100) - administered)
 days_left: int = vaccines_needed // per_day
 
 today: datetime = datetime.today()
@@ -31,5 +31,7 @@ days_to_goal: timedelta = timedelta(days_left)
 date_reach_goal: datetime = today + days_to_goal
 
 final_date: str = date_reach_goal.strftime("%B %d, %Y")
+days_left: str = str(int(days_left))
+target: str = str(target)
 
-print("We will reach " + str(target) + "% vaccination in " + str(int(days_left)) + " days, which falls on " + final_date + ".")
+print("We will reach " + target + "% vaccination in " + days_left + " days, which falls on " + final_date + ".")

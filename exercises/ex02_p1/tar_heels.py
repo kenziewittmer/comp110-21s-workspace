@@ -9,7 +9,8 @@ def main() -> None:
     print(tar_heels(choice))
 
 
-def tar_heels(b: int) -> int:
+def tar_heels(b: int) -> str:
+    """Weird function that returns a UNC cheer!"""
     remainder_7: int = b % 7
     remainder_2: int = b % 2
     if remainder_7 + remainder_2 == 0:
