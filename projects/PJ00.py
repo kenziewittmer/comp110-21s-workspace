@@ -1,10 +1,12 @@
 """Project 1: Choose Your Own Adventure"""
+
 __author__: str = "730405231"
 
 from random import randint
 
 player: str = ""
 points: int = 0
+pet: str = ""
 SNAKE_EMOJI: str = "\U0001F40D"
 HEART_EMOJI: str = "\U0001F49E"
 HAND_OVER_FACE: str = "\U0001F92D"
@@ -23,13 +25,18 @@ BRITNEY: str = "\U0001F483"
 BOOT: str = "\U0001F97E"
 PET_BIRD: str = "\U0001F99C"
 HUNDRED: str = "\U0001F4AF"
-pet: str = ""
+
+print("Welcome.")
+print("Before we begin, know that your responses here ARE case-sensitive. When responding with 'yes', please do not capitalize the Y.")
+print("Similarly, when you want to complete a task, please repeat it back in the same format.")
+print("For example, if I ask, 'Do you want to go to the park or go home?' please respond exactly, 'go to the park' or 'go home'.")
+input()
 
 
 def main() -> None:
-    """Entrypoint to the program"""
+    """Entrypoint to the game."""
     greet()
-    choice_1: int = input("Are you here to adopt, donate, or learn to code? \n")
+    choice_1: int = input("Would you like to adopt, donate, or learn to code? \n")
     if choice_1 == "adopt":
         adoption()
         go_home()
@@ -42,8 +49,8 @@ def main() -> None:
         points = points + 10
         print("Sorry, this isn't a coding facility! We are a python rescue. Check out Kris Jordan on Youtube to learn to code!")
         choice_2: int = input("Can I help you with anything else? \n")
-        if choice_2 == "Yes":
-            choice_3: int = input("Do you want to adopt or donate?")
+        if choice_2 == "yes":
+            choice_3: int = input("Do you want to adopt or donate? \n")
             if choice_3 == "adopt":
                 adoption()
                 go_home()
@@ -60,10 +67,6 @@ def greet() -> None:
     player = input("What's your name? \n")
     print(f"Hi {player}, nice to meet you! {SMILE}")
     input()
-    print("Just so you know, your responses here ARE case-sensitive. When responding with 'Yes', please capitalize the Y.")
-    print("Similarly, when you want to complete a task, please repeat it back in the same format.")
-    print("For example, if I ask, 'Do you want to go to the park or go home?' please respond exactly, 'go to the park' or 'go home'.")
-    input()
 
 
 def adoption() -> None:
@@ -74,11 +77,11 @@ def adoption() -> None:
     print(f"It's wonderful that you're looking to adopt, {player}! {MONEY_EYES}")
     input()
     view_snakes: str = input("Would you like to see what we have available? \n")
-    if view_snakes == "Yes":
+    if view_snakes == "yes":
         print(stock())
         input()
         want_to_adopt: str = input("Would you like to adopt one of these snakes? \n")
-        if want_to_adopt == "Yes":
+        if want_to_adopt == "yes":
             print(f"That's wonderful! {CELEBRATE_EMOJI}")
             input()
             global pet
@@ -126,14 +129,14 @@ def go_home() -> None:
         print("Now, you can play with Malbolge, return to the rescue, or go to sleep.")
         home_decision: str = input("Which would you like to do? \n")
         if home_decision == "play with Malbolge":
-                print(play())
+                play()
                 input()
                 print(f"That was fun, but now Malbolge is exhausted. I think it's time to sleep. {ZZZ_EMOJI}")
                 input()
                 sleep()
                 if home_decision == "return to the rescue":
                     return_to_rescue: str = input(f"Hello again, {player}! Would you like to donate today?")
-                    if return_to_rescue == "Yes":
+                    if return_to_rescue == "yes":
                         donation()
                         home()
                     else:
@@ -149,14 +152,14 @@ def go_home() -> None:
             print("Now, you can play with Java, return to the rescue, or go to sleep.")
             home_decision: str = input("Which would you like to do? \n")
             if home_decision == "play with Java":
-                print(play())
+                play()
                 input()
                 print(f"That was fun, but now Java is exhausted. I think it's time to sleep {ZZZ_EMOJI}")
                 input()
                 sleep()
                 if home_decision == "return to the rescue":
                     return_to_rescue: str = input(f"Hello again, {player}! Would you like to donate today?")
-                    if return_to_rescue == "Yes":
+                    if return_to_rescue == "yes":
                         donation()
                         home()
                     else:
@@ -172,14 +175,14 @@ def go_home() -> None:
                 print("Now, you can play with C, return to the rescue, or go to sleep.")
                 home_decision: str = input("Which would you like to do? \n")
                 if home_decision == "play with C":
-                    print(play())
+                    play()
                     input()
                     print(f"That was fun, but now C is exhausted. I think it's time to sleep {ZZZ_EMOJI}")
                     input()
                     sleep()
                 if home_decision == "return to the rescue":
                     return_to_rescue: str = input(f"Hello again, {player}! Would you like to donate today?")
-                    if return_to_rescue == "Yes":
+                    if return_to_rescue == "yes":
                         donation()
                         home()
                     else:
@@ -194,7 +197,6 @@ def go_home() -> None:
                 print("Now, you can return to the rescue or go to sleep.")
                 home_decision: str = input("Which would you like to do? \n")
                 if home_decision == "return to the rescue":
-                    input()
                     main()
                 if home_decision == "go to sleep":
                     print("Goodnight!")
@@ -204,22 +206,21 @@ def go_home() -> None:
 def play() -> None:
     """Function that allows interaction with the adopted python"""
     print("+20 points")
+    global points
+    points += 20
     a: str = f"You feed your snake a mouse (yuck!) {MOUSE_EMOJI}"
     b: str = f"You crochet your snake a little cap {COWBOY}"
     c: str = f"You wear your snake as a necklace and people think you are Britney Spears {BRITNEY}"
     d: str = f"You put your snake in a boot and say 'There's a snake in my boot!' {BOOT}"
-    e: str = "You introduce your snake to your pet bird, and they become friends. {PET_BIRD}"
-    generator: int = randint(1, 5)
-    if generator > 4:
-        return e
-    if generator > 3:
-        return d
-    if generator > 2:
-        return c
-    if generator > 1:
-        return b
-    if generator > 0:
-        return a
+    e: str = f"You introduce your snake to your pet bird, and they become friends. {PET_BIRD}"
+    generator: int = randint(0, 4)
+    games: list[int] = [a, b, c, d, e]
+    print(a)
+    i: int = 1
+    while i < 11:
+        while input("Do you want to play again? \n") == "yes":
+            print(games[randint(0, 4)])
+            i += 1
 
 
 def sleep() -> None:
@@ -228,12 +229,14 @@ def sleep() -> None:
     input()
     print("click.")
     input()
+    print("click click.")
+    input()
     print("click click click.")
     curious_noise: str = input("Do you want to figure out what the noise is? \n")
-    if curious_noise == "yes" or "Yes" or "YES" or "sure" or "Sure" or "SURE" or "yeah" or "Yeah" or "YEAH":
-        print("+100 points")
+    if curious_noise == "yes":
+        print(f"+{HUNDRED} points")
         global points
-        points = points + 100
+        points += 100
         print(f"You notice {pet} is not in their cage.")
         input()
         print(f"The noise is coming from your office, so you open the door...")
