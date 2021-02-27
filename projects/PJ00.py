@@ -58,7 +58,9 @@ def main() -> None:
                 donation()
                 go_home()
         else:
-            print("Alright, goodbye!")
+            print("Sorry to hear that. Have a good one!")
+            go_home()
+
 
 def greet() -> None:
     """Welcomes player to the game and gives instructions"""
